@@ -49,6 +49,7 @@ export default function RootLayout({
         {/* Swipe navigation across main routes (mobile/tablet). Order determines next/previous. */}
         <SwipeNavigator
           routes={["/", "/projects", "/game", "/qualification", "/socials"]}
+          enabled={true}
         />
 
         <div className="min-h-screen w-screen flex flex-col items-center justify-between overflow-x-hidden pt-16 md:pt-20 pb-20 md:pb-24 relative z-10">

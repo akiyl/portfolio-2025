@@ -6,13 +6,19 @@ import { usePathname, useRouter } from "next/navigation";
 interface SwipeNavigatorProps {
   routes: string[];
   threshold?: number;
+  enabled?: boolean;
 }
 
-const normalize = (p: string) => (p === "" ? "/" : p.split("?")[0]);
+const normalize = (p: string) => {
+  if (p === "" || p === "/") return "/";
+  const base = (p || "").split("?")[0];
+  return base.endsWith("/") ? base.slice(0, -1) : base;
+};
 
 export default function SwipeNavigatorAnimated({
   routes,
   threshold = 60,
+  enabled = true,
 }: SwipeNavigatorProps) {
   const pathname = usePathname();
   const router = useRouter();
@@ -26,12 +32,15 @@ export default function SwipeNavigatorAnimated({
   const [animDir, setAnimDir] = useState<"left" | "right" | null>(null);
 
   useEffect(() => {
+    // Accept coarse pointer or touch capable devices OR small screens (mobile)
     const isTouchCapable =
       typeof window !== "undefined" &&
-      ("ontouchstart" in window || navigator.maxTouchPoints > 0);
+      ("ontouchstart" in window ||
+        navigator.maxTouchPoints > 0 ||
+        window.matchMedia("(pointer: coarse)").matches);
     const isSmallScreen =
       typeof window !== "undefined" && window.innerWidth <= 768;
-    if (!isTouchCapable || !isSmallScreen) return;
+    if (!enabled || !isTouchCapable || !isSmallScreen) return;
 
     setIsMobile(true);
     try {
@@ -42,13 +51,26 @@ export default function SwipeNavigatorAnimated({
     }
 
     const el = document.documentElement;
+    // Fallback: prefer body if documentElement doesn't dispatch pointer events
 
+    // handle raw touchstart
     const onTouchStart = (e: TouchEvent) => {
       if (!e.touches || e.touches.length === 0) return;
       startX.current = e.touches[0].clientX;
       startY.current = e.touches[0].clientY;
+      if (process.env.NODE_ENV !== "production")
+        console.debug("Swipe start", startX.current, startY.current);
     };
 
+    // handle pointer events for browsers that implement pointer events (some
+    // Android / desktop browsers don't emit TouchEvent but have pointer events)
+    const onPointerDown = (e: PointerEvent) => {
+      if (e.pointerType !== "touch") return;
+      startX.current = e.clientX;
+      startY.current = e.clientY;
+    };
+
+    // handle raw touch end & pointer up
     const onTouchEnd = (e: TouchEvent) => {
       if (locked.current) return;
       if (startX.current === null || startY.current === null) return;
@@ -58,6 +80,63 @@ export default function SwipeNavigatorAnimated({
       const dx = touch.clientX - startX.current;
       const dy = touch.clientY - startY.current;
 
+      if (process.env.NODE_ENV !== "production")
+        console.debug("Swipe end", dx, dy, threshold);
+
+      if (Math.abs(dx) > threshold && Math.abs(dx) > Math.abs(dy) * 1.5) {
+        const current = normalize(pathname || "/");
+        const idx = routes.findIndex((r) => normalize(r) === current);
+        if (idx === -1) return;
+
+        if (dx < 0) {
+          const next = routes[idx + 1];
+          if (next) {
+            locked.current = true;
+            setIsAnimating(true);
+            setAnimDir("left");
+            setTimeout(() => {
+              router.push(next);
+              setTimeout(() => {
+                locked.current = false;
+                setIsAnimating(false);
+                setAnimDir(null);
+              }, 600);
+            }, 240);
+          }
+        }
+
+        if (dx > 0) {
+          const prev = routes[idx - 1];
+          if (prev) {
+            locked.current = true;
+            setIsAnimating(true);
+            setAnimDir("right");
+            setTimeout(() => {
+              router.push(prev);
+              setTimeout(() => {
+                locked.current = false;
+                setIsAnimating(false);
+                setAnimDir(null);
+              }, 600);
+            }, 240);
+          }
+        }
+      }
+
+      startX.current = null;
+      startY.current = null;
+    };
+
+    const onPointerUp = (e: PointerEvent) => {
+      if (process.env.NODE_ENV !== "production")
+        console.debug("Pointer swipe end", dx, dy, threshold);
+
+      if (e.pointerType !== "touch") return;
+      if (locked.current) return;
+      if (startX.current === null || startY.current === null) return;
+
+      const dx = e.clientX - startX.current;
+      const dy = e.clientY - startY.current;
       if (Math.abs(dx) > threshold && Math.abs(dx) > Math.abs(dy) * 1.5) {
         const current = normalize(pathname || "/");
         const idx = routes.findIndex((r) => normalize(r) === current);
@@ -104,10 +183,15 @@ export default function SwipeNavigatorAnimated({
 
     el.addEventListener("touchstart", onTouchStart, { passive: true });
     el.addEventListener("touchend", onTouchEnd, { passive: true });
+    // attach pointer event fallbacks
+    el.addEventListener("pointerdown", onPointerDown, { passive: true });
+    el.addEventListener("pointerup", onPointerUp, { passive: true });
 
     return () => {
       el.removeEventListener("touchstart", onTouchStart);
       el.removeEventListener("touchend", onTouchEnd);
+      el.removeEventListener("pointerdown", onPointerDown);
+      el.removeEventListener("pointerup", onPointerUp);
     };
   }, [pathname, routes, router, threshold]);
 
