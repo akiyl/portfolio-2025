@@ -4,7 +4,7 @@ import "./globals.css";
 import About from "@/components/main/about";
 import Navigation from "@/components/nav";
 import Header from "@/components/Header";
-
+import LightRays from "@/components/lightRays";
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -30,11 +30,26 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-[#121212]`}
       >
-        <div className="h-screen w-screen flex flex-col items-center">
+        <LightRays
+          raysOrigin="top-center"
+          raysColor="#00ffff"
+          raysSpeed={1.5}
+          lightSpread={0.8}
+          rayLength={1.2}
+          followMouse={true}
+          mouseInfluence={0.1}
+          noiseAmount={0.1}
+          distortion={0.05}
+          className="custom-rays"
+        />
+
+        <Navigation />
+
+        <div className="min-h-screen w-screen flex flex-col items-center justify-between overflow-x-hidden pt-16 md:pt-20 pb-20 md:pb-24 relative z-10">
           <Header />
-          {children}
-          {/* <About /> */}
-          <Navigation />
+          <div className="flex-1 flex items-center justify-center w-full">
+            {children}
+          </div>
         </div>
       </body>
     </html>

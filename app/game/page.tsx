@@ -300,7 +300,9 @@ export default function Home() {
         player.velocity.x = 5;
         player.switchSprite("run");
       } else if (!player.isAttacking) {
-        player.switchSprite("idle");
+        player.switchSprite("attack" in player.sprites ? "idle" : "run");
+      } else {
+        enemy.switchSprite("idle");
       }
 
       // Enemy movement
@@ -311,6 +313,8 @@ export default function Home() {
         enemy.velocity.x = 5;
         enemy.switchSprite("run");
       } else if (!enemy.isAttacking) {
+        enemy.switchSprite("idle");
+      } else {
         enemy.switchSprite("idle");
       }
 

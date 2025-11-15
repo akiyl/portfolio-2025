@@ -1,7 +1,7 @@
 const qualification = () => {
   return (
     <>
-      <div className="w-[50vw] flex flex-col  justify-center gap-4 mt-10 px-10">
+      <div className="w-full md:w-[50vw] flex flex-col justify-center gap-4 mt-10 px-4 md:px-10 pb-10 md:pb-0">
         <div className="flex items-center gap-3 mt-5">
           <span>
             <svg
@@ -10,7 +10,6 @@ const qualification = () => {
               fill="#d1d5db"
               strokeWidth="0"
               viewBox="0 0 24 24"
-              // className="w-6 h-6 mb-1"
               height="1em"
               width="1em"
               xmlns="http://www.w3.org/2000/svg"
@@ -18,12 +17,17 @@ const qualification = () => {
               <path d="M12.4142 5H21C21.5523 5 22 5.44772 22 6V20C22 20.5523 21.5523 21 21 21H3C2.44772 21 2 20.5523 2 20V4C2 3.44772 2.44772 3 3 3H10.4142L12.4142 5ZM20 11H4V19H20V11ZM20 9V7H11.5858L9.58579 5H4V9H20Z"></path>
             </svg>
           </span>
-          <div className="display flex text-sm    ">
-            <h3 className="text-md text-wrap"> Diploma in civil Eng</h3>
-            <h3 className="text-md float-right ">Jun 2021 - oct 2024</h3>
+          <div className="display flex flex-col md:flex-row text-xs md:text-sm gap-2">
+            <h3 className="text-sm md:text-md text-wrap">
+              {" "}
+              Diploma in civil Eng
+            </h3>
+            <h3 className="text-xs md:text-sm text-gray-400">
+              Jun 2021 - oct 2024
+            </h3>
           </div>
         </div>
-        <p className="text-[14px] text-gray-400">
+        <p className="text-xs md:text-sm text-gray-400">
           {" "}
           I completed my diploma in civil Engineering from the Government
           Polytechnic College, RaniPohkri , dehradun, Uttarakhand. This program
@@ -31,10 +35,10 @@ const qualification = () => {
           hobby i was interested in web development and programming.
         </p>
 
-        <div className="flex gap-2 items-center  mt-2">
+        <div className="flex gap-2 items-center mt-2">
           <a
             href=""
-            className=" flex items-center text-gray-500 hover:text-gray-600  hover:scale-110"
+            className=" flex items-center text-gray-500 hover:text-gray-600 hover:scale-110"
           >
             <svg
               stroke="currentColor"

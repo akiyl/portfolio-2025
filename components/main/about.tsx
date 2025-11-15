@@ -1,15 +1,15 @@
 const About = () => {
   return (
     <>
-      <div className=" flex flex-col justify-center items-center w-[45vw] gap-5 mt-8 ">
-        <div className="text-justify">
+      <div className="flex flex-col justify-center items-center w-full md:w-[45vw] gap-5 mt-8 px-4 md:px-0 pb-10 md:pb-0 ">
+        <div className="text-justify text-sm md:text-base">
           Hey, I'm Akshat a developer passionate about building impactful
           solutions that enhance convenience and add value through tech and
           code. When I'm not working on projects, you can find me tinkering on X
           (twitter), exploring the latest trends in financial tech (Fintech) and
           startups. I'm dedicated to build products that make a difference.
         </div>
-        <div className="flex gap-2 items-center self-start">
+        <div className="flex gap-2 items-center self-start text-sm md:text-base">
           <div>
             <div>
               <img
@@ -23,9 +23,9 @@ const About = () => {
         <div>
           <span></span>
         </div>
-        <div>
-          <h3 className=""> Skills & Technologies</h3>
-          <div className="flex flex-wrap gap-1 mt-5 text-[12px] ">
+        <div className="w-full">
+          <h3 className="text-sm md:text-base">Skills & Technologies</h3>
+          <div className="flex flex-wrap gap-1 mt-5 text-xs md:text-[12px]">
             <span
               className={`group p-1   border-solid border-[1px] border-gray-300 flex items-center justify-center gap-2 mb-4 animate-fade-in transition-all duration-200`}
             >

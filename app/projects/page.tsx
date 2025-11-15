@@ -2,7 +2,7 @@ import Link from "next/link";
 
 const ProjectsPage = () => {
   return (
-    <div className="flex flex-col  justify-center w-[50vw] gap-3 mt-10 px-10">
+    <div className="flex flex-col justify-center w-full md:w-[50vw] gap-3 mt-10 px-4 md:px-10 pb-10 md:pb-0">
       {" "}
       <div className="flex items-center gap-2">
         <span>
@@ -12,7 +12,6 @@ const ProjectsPage = () => {
             fill="#d1d5db"
             strokeWidth="0"
             viewBox="0 0 24 24"
-            // className="w-6 h-6 mb-1"
             height="1em"
             width="1em"
             xmlns="http://www.w3.org/2000/svg"
@@ -20,12 +19,12 @@ const ProjectsPage = () => {
             <path d="M12.4142 5H21C21.5523 5 22 5.44772 22 6V20C22 20.5523 21.5523 21 21 21H3C2.44772 21 2 20.5523 2 20V4C2 3.44772 2.44772 3 3 3H10.4142L12.4142 5ZM20 11H4V19H20V11ZM20 9V7H11.5858L9.58579 5H4V9H20Z"></path>
           </svg>
         </span>
-        <a href="newflix-lilac.vercel.app" className="text-md">
+        <a href="newflix-lilac.vercel.app" className="text-sm md:text-md">
           {" "}
           Newflix
         </a>
       </div>
-      <p className="text-[14px] text-gray-400 mb-3">
+      <p className="text-xs md:text-sm text-gray-400 mb-3">
         {" "}
         Newflix is a fully responsive, high-fidelity clone of Netflix, designed
         to replicate its sleek UI and streaming platform functionality. Built
@@ -33,32 +32,32 @@ const ProjectsPage = () => {
         full-stack development skills through dynamic content rendering, user
         authentication, and seamless UI animations.
       </p>
-      <div className="flex gap-1 flex-wrap text-sm">
+      <div className="flex gap-1 flex-wrap text-xs md:text-sm">
         <span
-          className={`group p-1   border-solid border-[1px] border-gray-300 flex items-center justify-center gap-2 mb-4 animate-fade-in transition-all duration-200`}
+          className={`group p-1 border-solid border-[1px] border-gray-300 flex items-center justify-center gap-2 mb-4 animate-fade-in transition-all duration-200`}
         >
           Next.js
         </span>
         <span
-          className={`group p-1   border-solid border-[1px] border-gray-300 flex items-center justify-center gap-2 mb-4 animate-fade-in transition-all duration-200`}
+          className={`group p-1 border-solid border-[1px] border-gray-300 flex items-center justify-center gap-2 mb-4 animate-fade-in transition-all duration-200`}
         >
           Prisma
         </span>
         <span
-          className={`group p-1   border-solid border-[1px] border-gray-300 flex items-center justify-center gap-2 mb-4 animate-fade-in transition-all duration-200`}
+          className={`group p-1 border-solid border-[1px] border-gray-300 flex items-center justify-center gap-2 mb-4 animate-fade-in transition-all duration-200`}
         >
           Supabase
         </span>
         <span
-          className={`group p-1   border-solid border-[1px] border-gray-300 flex items-center justify-center gap-2 mb-4 animate-fade-in transition-all duration-200`}
+          className={`group p-1 border-solid border-[1px] border-gray-300 flex items-center justify-center gap-2 mb-4 animate-fade-in transition-all duration-200`}
         >
           shadcnUi
         </span>
       </div>
-      <div className="flex gap-2 items-center  mt-2 ">
+      <div className="flex gap-2 items-center mt-2">
         <a
           href="newflix-lilac.vercel.app"
-          className=" flex items-center text-gray-500 hover:text-gray-600  hover:scale-110"
+          className=" flex items-center text-gray-500 hover:text-gray-600 hover:scale-110"
         >
           <svg
             stroke="currentColor"
@@ -74,7 +73,7 @@ const ProjectsPage = () => {
         </a>
         <a
           href="https://github.com/akiyl/Newflix"
-          className=" flex items-center text-gray-500 hover:text-gray-600  hover:scale-110"
+          className=" flex items-center text-gray-500 hover:text-gray-600 hover:scale-110"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -97,7 +96,6 @@ const ProjectsPage = () => {
             fill="#d1d5db"
             strokeWidth="0"
             viewBox="0 0 24 24"
-            // className="w-6 h-6 mb-1"
             height="1em"
             width="1em"
             xmlns="http://www.w3.org/2000/svg"
@@ -106,15 +104,14 @@ const ProjectsPage = () => {
           </svg>
         </span>
         <a
-          href="discord-clone-seven-mu.vercel.app
-"
-          className="text-md"
+          href="discord-clone-seven-mu.vercel.app"
+          className="text-sm md:text-md"
         >
           {" "}
           Discord Clone
         </a>
       </div>
-      <p className="text-[14px] text-gray-400 mb-3">
+      <p className="text-xs md:text-sm text-gray-400 mb-3">
         {" "}
         I developed a full-stack Discord clone that replicates the core features
         of the popular chat platform, including real-time messaging, user
@@ -124,32 +121,32 @@ const ProjectsPage = () => {
         communication, the app allows users to sign up, join or create servers,
         chat in public or private channels, and send direct messages.
       </p>
-      <div className="flex gap-1 flex-wrap text-sm">
+      <div className="flex gap-1 flex-wrap text-xs md:text-sm">
         <span
-          className={`group p-1   border-solid border-[1px] border-gray-300 flex items-center justify-center gap-2 mb-4 animate-fade-in transition-all duration-200`}
+          className={`group p-1 border-solid border-[1px] border-gray-300 flex items-center justify-center gap-2 mb-4 animate-fade-in transition-all duration-200`}
         >
           Next.js
         </span>
         <span
-          className={`group p-1   border-solid border-[1px] border-gray-300 flex items-center justify-center gap-2 mb-4 animate-fade-in transition-all duration-200`}
+          className={`group p-1 border-solid border-[1px] border-gray-300 flex items-center justify-center gap-2 mb-4 animate-fade-in transition-all duration-200`}
         >
           Prisma
         </span>
         <span
-          className={`group p-1   border-solid border-[1px] border-gray-300 flex items-center justify-center gap-2 mb-4 animate-fade-in transition-all duration-200`}
+          className={`group p-1 border-solid border-[1px] border-gray-300 flex items-center justify-center gap-2 mb-4 animate-fade-in transition-all duration-200`}
         >
           Supabase
         </span>
         <span
-          className={`group p-1   border-solid border-[1px] border-gray-300 flex items-center justify-center gap-2 mb-4 animate-fade-in transition-all duration-200`}
+          className={`group p-1 border-solid border-[1px] border-gray-300 flex items-center justify-center gap-2 mb-4 animate-fade-in transition-all duration-200`}
         >
           shadcnUi
         </span>
       </div>
-      <div className="flex gap-2 items-center  ">
+      <div className="flex gap-2 items-center">
         <a
           href="discord-clone-seven-mu.vercel.app"
-          className=" flex items-center text-gray-500 hover:text-gray-600  hover:scale-110"
+          className=" flex items-center text-gray-500 hover:text-gray-600 hover:scale-110"
         >
           <svg
             stroke="currentColor"
@@ -165,7 +162,7 @@ const ProjectsPage = () => {
         </a>
         <a
           href="https://github.com/akiyl/discord-clone"
-          className=" flex items-center text-gray-500 hover:text-gray-600  hover:scale-110"
+          className=" flex items-center text-gray-500 hover:text-gray-600 hover:scale-110"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
