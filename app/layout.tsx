@@ -5,6 +5,7 @@ import About from "@/components/main/about";
 import Navigation from "@/components/nav";
 import Header from "@/components/Header";
 import LightRays from "@/components/lightRays";
+import SwipeNavigator from "@/components/SwipeNavigatorAnimated";
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -45,9 +46,14 @@ export default function RootLayout({
 
         <Navigation />
 
+        {/* Swipe navigation across main routes (mobile/tablet). Order determines next/previous. */}
+        <SwipeNavigator
+          routes={["/", "/projects", "/game", "/qualification", "/socials"]}
+        />
+
         <div className="min-h-screen w-screen flex flex-col items-center justify-between overflow-x-hidden pt-16 md:pt-20 pb-20 md:pb-24 relative z-10">
           <Header />
-          <div className="flex-1 flex items-center justify-center w-full">
+          <div className="flex-1 flex items-center justify-center w-full max-w-screen-xl mx-auto px-4 md:px-0">
             {children}
           </div>
         </div>

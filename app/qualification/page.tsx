@@ -1,13 +1,15 @@
-const qualification = () => {
+"use client";
+import AnimatedText from "@/components/AnimatedText";
+
+const Qualification = () => {
   return (
     <>
       <div className="w-full md:w-[50vw] flex flex-col justify-center gap-4 mt-10 px-4 md:px-10 pb-10 md:pb-0">
         <div className="flex items-center gap-3 mt-5">
           <span>
             <svg
-              stroke="              
-            "
-              fill="#d1d5db"
+              stroke="currentColor"
+              fill="currentColor"
               strokeWidth="0"
               viewBox="0 0 24 24"
               height="1em"
@@ -17,23 +19,33 @@ const qualification = () => {
               <path d="M12.4142 5H21C21.5523 5 22 5.44772 22 6V20C22 20.5523 21.5523 21 21 21H3C2.44772 21 2 20.5523 2 20V4C2 3.44772 2.44772 3 3 3H10.4142L12.4142 5ZM20 11H4V19H20V11ZM20 9V7H11.5858L9.58579 5H4V9H20Z"></path>
             </svg>
           </span>
-          <div className="display flex flex-col md:flex-row text-xs md:text-sm gap-2">
-            <h3 className="text-sm md:text-md text-wrap">
-              {" "}
+          <div className="flex flex-col md:flex-row text-xs md:text-sm gap-2 break-words">
+            <AnimatedText
+              as="h3"
+              className="text-sm md:text-md text-wrap"
+              delay={0.04}
+            >
               Diploma in civil Eng
-            </h3>
-            <h3 className="text-xs md:text-sm text-gray-400">
+            </AnimatedText>
+            <AnimatedText
+              as="h3"
+              className="text-xs md:text-sm text-gray-400"
+              delay={0.08}
+            >
               Jun 2021 - oct 2024
-            </h3>
+            </AnimatedText>
           </div>
         </div>
-        <p className="text-xs md:text-sm text-gray-400">
-          {" "}
+        <AnimatedText
+          as="p"
+          className="text-xs md:text-sm text-gray-400"
+          delay={0.12}
+        >
           I completed my diploma in civil Engineering from the Government
-          Polytechnic College, RaniPohkri , dehradun, Uttarakhand. This program
-          provided me with a solid foundation in civil engineerin. and as a
-          hobby i was interested in web development and programming.
-        </p>
+          Polytechnic College, RaniPohkri, Dehradun, Uttarakhand. This program
+          provided me with a solid foundation in civil engineering. As a hobby,
+          I became interested in web development and programming.
+        </AnimatedText>
 
         <div className="flex gap-2 items-center mt-2">
           <a
@@ -57,4 +69,4 @@ const qualification = () => {
     </>
   );
 };
-export default qualification;
+export default Qualification;

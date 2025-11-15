@@ -1,4 +1,5 @@
 import Link from "next/link";
+import AnimatedText from "@/components/AnimatedText";
 
 const ProjectsPage = () => {
   return (
@@ -19,40 +20,37 @@ const ProjectsPage = () => {
             <path d="M12.4142 5H21C21.5523 5 22 5.44772 22 6V20C22 20.5523 21.5523 21 21 21H3C2.44772 21 2 20.5523 2 20V4C2 3.44772 2.44772 3 3 3H10.4142L12.4142 5ZM20 11H4V19H20V11ZM20 9V7H11.5858L9.58579 5H4V9H20Z"></path>
           </svg>
         </span>
-        <a href="newflix-lilac.vercel.app" className="text-sm md:text-md">
-          {" "}
-          Newflix
-        </a>
+        <AnimatedText as="span" className="text-sm md:text-md" delay={0.04}>
+          <a
+            href="https://newflix-lilac.vercel.app"
+            className="hover:underline"
+          >
+            Newflix
+          </a>
+        </AnimatedText>
       </div>
-      <p className="text-xs md:text-sm text-gray-400 mb-3">
-        {" "}
+      <AnimatedText
+        as="p"
+        className="text-xs md:text-sm text-gray-400 mb-3"
+        delay={0.12}
+      >
         Newflix is a fully responsive, high-fidelity clone of Netflix, designed
         to replicate its sleek UI and streaming platform functionality. Built
         with modern web technologies, Newflix showcases my frontend and
         full-stack development skills through dynamic content rendering, user
         authentication, and seamless UI animations.
-      </p>
+      </AnimatedText>
       <div className="flex gap-1 flex-wrap text-xs md:text-sm">
-        <span
-          className={`group p-1 border-solid border-[1px] border-gray-300 flex items-center justify-center gap-2 mb-4 animate-fade-in transition-all duration-200`}
-        >
-          Next.js
-        </span>
-        <span
-          className={`group p-1 border-solid border-[1px] border-gray-300 flex items-center justify-center gap-2 mb-4 animate-fade-in transition-all duration-200`}
-        >
-          Prisma
-        </span>
-        <span
-          className={`group p-1 border-solid border-[1px] border-gray-300 flex items-center justify-center gap-2 mb-4 animate-fade-in transition-all duration-200`}
-        >
-          Supabase
-        </span>
-        <span
-          className={`group p-1 border-solid border-[1px] border-gray-300 flex items-center justify-center gap-2 mb-4 animate-fade-in transition-all duration-200`}
-        >
-          shadcnUi
-        </span>
+        {["Next.js", "Prisma", "Supabase", "shadcnUi"].map((tech, i) => (
+          <AnimatedText
+            as="span"
+            key={tech}
+            className={`group p-1 border-solid border-[1px] border-gray-300 flex items-center justify-center gap-2 mb-4`}
+            delay={0.18 + i * 0.04}
+          >
+            {tech}
+          </AnimatedText>
+        ))}
       </div>
       <div className="flex gap-2 items-center mt-2">
         <a

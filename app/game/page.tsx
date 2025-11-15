@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import AnimatedText from "@/components/AnimatedText";
 
 export default function Home() {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
@@ -410,34 +411,43 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="relative inline-block">
-      <div>
-        <div className="absolute flex w-full items-center">
-          <div className="flex justify-end relative h-6 w-full">
+    <>
+      <AnimatedText
+        as="h2"
+        className="text-lg md:text-2xl text-center mb-4 text-white"
+        delay={0.04}
+      >
+        Battle Arena
+      </AnimatedText>
+      <div className="relative inline-block">
+        <div>
+          <div className="absolute flex w-full items-center">
+            <div className="flex justify-end relative h-6 w-full">
+              <div
+                id="playerHealth"
+                className="top-0 left-5 bg-amber-300 z-10 h-6 w-full p-5"
+              ></div>
+            </div>
             <div
-              id="playerHealth"
-              className="top-0 left-5 bg-amber-300 z-10 h-6 w-full p-5"
+              id="timer"
+              className="bg-red-500 h-24 w-24 shrink-0 flex items-center justify-center text-white text-3xl font-bold"
             ></div>
-          </div>
-          <div
-            id="timer"
-            className="bg-red-500 h-24 w-24 shrink-0 flex items-center justify-center text-white text-3xl font-bold"
-          ></div>
-          <div className="relative h-6 w-full">
-            <div
-              id="enemyHealth"
-              className="top-0 left-5 bg-amber-300 h-7 p-5"
-            ></div>
+            <div className="relative h-6 w-full">
+              <div
+                id="enemyHealth"
+                className="top-0 left-5 bg-amber-300 h-7 p-5"
+              ></div>
+            </div>
           </div>
         </div>
+
+        <div
+          id="result"
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-6xl font-bold text-white hidden animate-pulse"
+        ></div>
+
+        <canvas ref={canvasRef}></canvas>
       </div>
-
-      <div
-        id="result"
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-6xl font-bold text-white hidden animate-pulse"
-      ></div>
-
-      <canvas ref={canvasRef}></canvas>
-    </div>
+    </>
   );
 }
