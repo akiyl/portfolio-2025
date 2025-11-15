@@ -25,8 +25,33 @@ export default function SwipeNavigatorAnimated({
   const startX = useRef<number | null>(null);
   const startY = useRef<number | null>(null);
   const locked = useRef(false);
-  const [showHint, setShowHint] = useState(false);
-  const [isMobile, setIsMobile] = useState(false);
+  const [showHint, setShowHint] = useState<boolean>(() => {
+    try {
+      // allow forced display via URL param for debugging: ?showSwipeHint=1
+      if (typeof window !== "undefined") {
+        const params = new URLSearchParams(window.location.search);
+        if (params.get("showSwipeHint") === "1") return true;
+      }
+
+      const seen = localStorage.getItem("swipeHintShown");
+      return !seen;
+    } catch (err) {
+      return true;
+    }
+  });
+
+  const [isMobile, setIsMobile] = useState<boolean>(() => {
+    try {
+      const isTouchCapable =
+        "ontouchstart" in window ||
+        navigator.maxTouchPoints > 0 ||
+        window.matchMedia("(pointer: coarse)").matches;
+      const isSmallScreen = window.innerWidth <= 768;
+      return !!(isTouchCapable && isSmallScreen);
+    } catch (err) {
+      return false;
+    }
+  });
 
   const [isAnimating, setIsAnimating] = useState(false);
   const [animDir, setAnimDir] = useState<"left" | "right" | null>(null);
@@ -58,8 +83,7 @@ export default function SwipeNavigatorAnimated({
       if (!e.touches || e.touches.length === 0) return;
       startX.current = e.touches[0].clientX;
       startY.current = e.touches[0].clientY;
-      if (process.env.NODE_ENV !== "production")
-        console.debug("Swipe start", startX.current, startY.current);
+      // debug removed for production
     };
 
     // handle pointer events for browsers that implement pointer events (some
@@ -80,8 +104,7 @@ export default function SwipeNavigatorAnimated({
       const dx = touch.clientX - startX.current;
       const dy = touch.clientY - startY.current;
 
-      if (process.env.NODE_ENV !== "production")
-        console.debug("Swipe end", dx, dy, threshold);
+      // debug removed for production
 
       if (Math.abs(dx) > threshold && Math.abs(dx) > Math.abs(dy) * 1.5) {
         const current = normalize(pathname || "/");
@@ -128,15 +151,13 @@ export default function SwipeNavigatorAnimated({
     };
 
     const onPointerUp = (e: PointerEvent) => {
-      if (process.env.NODE_ENV !== "production")
-        console.debug("Pointer swipe end", dx, dy, threshold);
-
       if (e.pointerType !== "touch") return;
       if (locked.current) return;
       if (startX.current === null || startY.current === null) return;
-
       const dx = e.clientX - startX.current;
       const dy = e.clientY - startY.current;
+
+      // debug removed for production
       if (Math.abs(dx) > threshold && Math.abs(dx) > Math.abs(dy) * 1.5) {
         const current = normalize(pathname || "/");
         const idx = routes.findIndex((r) => normalize(r) === current);
@@ -206,6 +227,20 @@ export default function SwipeNavigatorAnimated({
 
   return (
     <>
+      {/* Small persistent pill (mobile only) that stays until the user clicks "Got it" */}
+      {showHint && isMobile && (
+        <div className="fixed left-1/2 bottom-6 -translate-x-1/2 z-50 md:hidden">
+          <div className="flex items-center gap-3 bg-slate-900/90 text-white text-sm px-3 py-2 rounded-full shadow-lg">
+            <div className="text-sm">Swipe to navigate</div>
+            <button
+              onClick={dismissHint}
+              className="ml-2 bg-white/6 hover:bg-white/10 rounded px-2 py-1 text-xs"
+            >
+              Got it
+            </button>
+          </div>
+        </div>
+      )}
       <AnimatePresence>
         {showHint && isMobile && (
           <motion.div
@@ -214,7 +249,7 @@ export default function SwipeNavigatorAnimated({
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 14 }}
             transition={{ duration: 0.36 }}
-            className="fixed left-1/2 bottom-20 -translate-x-1/2 z-50 pointer-events-auto"
+            className="fixed left-1/2 bottom-20 -translate-x-1/2 z-50 pointer-events-auto md:hidden"
           >
             <div className="flex items-center gap-3 bg-gradient-to-r from-slate-900 via-slate-800 to-black/80 text-white text-sm px-5 py-3 rounded-full shadow-xl">
               <div className="flex items-center gap-3">
@@ -265,7 +300,7 @@ export default function SwipeNavigatorAnimated({
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.22 }}
-            className="fixed inset-0 z-[60] pointer-events-none flex items-center justify-center"
+            className="fixed inset-0 z-[60] pointer-events-none flex items-center justify-center md:hidden"
           >
             <motion.div
               initial={{ x: animDir === "left" ? 80 : -80, opacity: 0 }}
