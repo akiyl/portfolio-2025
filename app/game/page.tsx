@@ -58,9 +58,9 @@ export default function GameHub() {
             >
               <Link
                 href={game.href}
-                className="flex flex-col items-center justify-center gap-2 p-6 rounded-xl border border-gray-700 bg-[#1a1a2e] hover:bg-[#252545] hover:border-[#60A5FA] transition-all duration-300 text-center"
+                className="flex flex-col items-center justify-center gap-2 p-4 md:p-6 rounded-xl border border-gray-700 bg-[#1a1a2e] hover:bg-[#252545] hover:border-[#60A5FA] transition-all duration-300 text-center"
               >
-                <span className="text-3xl">{game.icon}</span>
+                <span className="text-2xl md:text-3xl">{game.icon}</span>
                 <span className="text-white font-semibold text-sm md:text-base">
                   {game.name}
                 </span>

@@ -1,65 +1,15 @@
 "use client";
 import Link from "next/link";
-import CardNav from "./CardNav";
 
 import { useState } from "react";
 const Navigation = () => {
   const [activeIndex, setActiveIndex] = useState<number | null>(0);
 
-  const items = [
-    {
-      label: "About",
-      bgColor: "#0D0716",
-      textColor: "#fff",
-      links: [
-        {
-          label: "Careers",
-          href: "/about",
-          ariaLabel: "About Careers",
-        },
-      ],
-    },
-    {
-      label: "Projects",
-      bgColor: "#170D27",
-      textColor: "#fff",
-      links: [
-        {
-          label: "Featured",
-          href: "https://github.com/akiyl",
-          ariaLabel: "Featured Projects",
-        },
-      ],
-    },
-    {
-      label: "Contact",
-      bgColor: "#271E37",
-      textColor: "#fff",
-      links: [
-        {
-          label: "Email",
-          href: "Akshatthapliyal2004@gmail.com",
-          ariaLabel: "Email us",
-        },
-        {
-          label: "Twitter",
-          href: "https://twitter.com/yourhandle",
-          ariaLabel: "Twitter",
-        },
-        {
-          label: "LinkedIn",
-          href: "https://www.linkedin.com/in/akshat-thapliyal-29162b276/",
-          ariaLabel: "LinkedIn",
-        },
-      ],
-    },
-  ];
-
   return (
     <>
-      <div className="fixed bottom-0 left-0 right-0 z-50 w-full md:hidden">
-        <div className="w-full flex items-center justify-center mb-2">
-          <div className="w-[90%] max-w-[800px] flex items-center justify-between bg-transparent px-3">
+      <div className="fixed bottom-0 left-0 right-0 z-50 w-full md:hidden bg-[#121212]">
+        <div className="w-full flex items-center justify-center">
+          <div className="w-[90%] max-w-[800px] flex items-center justify-between px-3">
             <a
               href="/"
               aria-label="About"
@@ -111,15 +61,6 @@ const Navigation = () => {
             </a>
           </div>
         </div>
-
-        <CardNav
-          items={items}
-          baseColor="#fff"
-          menuColor="#000"
-          buttonBgColor="#111"
-          buttonTextColor="#fff"
-          ease="power3.out"
-        />
       </div>
 
       <div className="hidden md:block fixed bottom-0 left-0 right-0 z-50">

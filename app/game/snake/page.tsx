@@ -130,12 +130,15 @@ export default function Snake() {
       <h1 className="text-2xl font-bold text-white mb-2">Snake</h1>
       <div className="text-sm text-gray-400 mb-2">Score: {score}</div>
       {gameOver && <div className="text-red-400 font-semibold mb-2">Game Over</div>}
-      <canvas
-        ref={canvasRef}
-        width={SIZE * TILE}
-        height={SIZE * TILE}
-        className="rounded-lg border border-gray-700"
-      />
+      <div className="w-full max-w-[400px]">
+        <canvas
+          ref={canvasRef}
+          width={SIZE * TILE}
+          height={SIZE * TILE}
+          className="rounded-lg border border-gray-700 w-full h-auto max-w-[400px]"
+          style={{ aspectRatio: "1/1" }}
+        />
+      </div>
       {!playing ? (
         <button
           onClick={start}

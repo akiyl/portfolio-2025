@@ -147,12 +147,12 @@ export default function TicTacToe() {
         </button>
       </div>
       <div className="text-sm mb-4 text-gray-300">{status}</div>
-      <div className="grid grid-cols-3 gap-2 w-64 h-64">
+      <div className="grid grid-cols-3 gap-2 w-full max-w-xs aspect-square">
         {board.map((cell, i) => (
           <button
             key={i}
             onClick={() => handleClick(i)}
-            className="text-3xl font-bold text-white bg-[#1a1a2e] border border-gray-700 rounded hover:bg-[#252545] transition-colors"
+            className="text-3xl font-bold text-white bg-[#1a1a2e] border border-gray-700 rounded hover:bg-[#252545] transition-colors aspect-square"
           >
             {cell}
           </button>
