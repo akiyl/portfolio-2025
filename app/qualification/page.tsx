@@ -1,10 +1,12 @@
 "use client";
 import AnimatedText from "@/components/AnimatedText";
+import Sequencer from "@/components/Sequencer";
 
 const Qualification = () => {
   return (
     <>
       <div className="w-full md:w-[50vw] flex flex-col justify-center gap-4 mt-10 px-4 md:px-10 pb-10 md:pb-0">
+        <Sequencer>
         <div className="flex items-center gap-3 mt-5">
           <span>
             <svg
@@ -65,6 +67,7 @@ const Qualification = () => {
             </svg>
           </a>
         </div>
+        </Sequencer>
       </div>
     </>
   );

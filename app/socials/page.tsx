@@ -1,9 +1,11 @@
 "use client";
 import AnimatedText from "@/components/AnimatedText";
+import Sequencer from "@/components/Sequencer";
 
 const Socials = () => {
   return (
     <div className="flex flex-col items-center justify-center min-h-screen animate-fade-in transition-all duration-200 pb-20 md:pb-0">
+      <Sequencer>
       <div className="grid grid-cols-2 md:grid-cols-3 md:grid gap-4 md:gap-4 p-4">
         <div
           className={`group flex items-center justify-center gap-2 mb-4 animate-fade-in transition-all duration-200`}
@@ -137,6 +139,7 @@ const Socials = () => {
           </a>
         </div>
       </div>
+      </Sequencer>
     </div>
   );
 };

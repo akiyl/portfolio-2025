@@ -223,41 +223,9 @@ const Navigation = () => {
             }}
           >
             <Link
-              href={"/qualification"}
-              className={`text-[#e3e3e3] flex flex-col items-center justify-center gap-1 hover:translate-y-[-3px] hover:text-[#60A5FA] hover:transition-all duration-300 ${
-                activeIndex === 3 ? "translate-y-[-3px]" : "translate-y-0"
-              }`}
-            >
-              {" "}
-              <svg
-                stroke="currentColor"
-                fill="currentColor"
-                strokeWidth="0"
-                viewBox="0 0 24 24"
-                className="w-5 h-5 md:w-6 md:h-6 mb-1"
-                height="1em"
-                width="1em"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path d="M17.8492 11.6983L17.1421 10.9912L7.24264 20.8907H3V16.648L14.3137 5.33432L19.9706 10.9912C20.3611 11.3817 20.3611 12.0149 19.9706 12.4054L12.8995 19.4765L11.4853 18.0622L17.8492 11.6983ZM15.7279 9.57696L14.3137 8.16274L5 17.4765V18.8907H6.41421L15.7279 9.57696ZM18.5563 2.50589L21.3848 5.33432C21.7753 5.72484 21.7753 6.35801 21.3848 6.74853L19.9706 8.16274L15.7279 3.9201L17.1421 2.50589C17.5327 2.11537 18.1658 2.11537 18.5563 2.50589Z"></path>
-              </svg>{" "}
-              <div
-                className={`w-1 h-1 bg-[#60A5FA] rounded ${
-                  activeIndex === 3 ? "opacity-100" : "opacity-0"
-                }  `}
-              ></div>
-            </Link>
-          </button>
-
-          <button
-            onClick={() => {
-              setActiveIndex(4);
-            }}
-          >
-            <Link
               href={"/socials"}
               className={`text-[#e3e3e3] flex flex-col items-center justify-center gap-1 hover:translate-y-[-3px] hover:text-[#60A5FA] hover:transition-all duration-300 ${
-                activeIndex === 4 ? "translate-y-[-3px]" : "translate-y-0"
+                activeIndex === 3 ? "translate-y-[-3px]" : "translate-y-0"
               }`}
             >
               {" "}
@@ -275,7 +243,7 @@ const Navigation = () => {
               </svg>{" "}
               <div
                 className={`w-1 h-1 bg-[#60A5FA] rounded ${
-                  activeIndex === 4 ? "opacity-100" : "opacity-0"
+                  activeIndex === 3 ? "opacity-100" : "opacity-0"
                 }  `}
               ></div>
             </Link>

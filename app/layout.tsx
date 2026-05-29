@@ -48,7 +48,7 @@ export default function RootLayout({
 
         {/* Swipe navigation across main routes (mobile/tablet). Order determines next/previous. */}
         <SwipeNavigator
-          routes={["/", "/projects", "/game", "/qualification", "/socials"]}
+          routes={["/", "/projects", "/game", "/socials"]}
           enabled={true}
         />
 
