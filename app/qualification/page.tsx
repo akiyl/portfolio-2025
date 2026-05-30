@@ -51,7 +51,7 @@ const Qualification = () => {
 
         <div className="flex gap-2 items-center mt-2">
           <a
-            href=""
+            href="#"
             className=" flex items-center text-gray-500 hover:text-gray-600 hover:scale-110"
           >
             <svg

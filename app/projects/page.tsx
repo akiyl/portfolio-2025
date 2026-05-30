@@ -1,12 +1,12 @@
 import Link from "next/link";
 import AnimatedText from "@/components/AnimatedText";
-import Sequencer from "@/components/Sequencer";
+import ScrollReveal from "@/components/ScrollReveal";
 
 const ProjectsPage = () => {
   return (
     <div className="flex flex-col justify-center w-full md:w-[50vw] gap-3 mt-10 px-4 md:px-10 pb-10 md:pb-0">
       {" "}
-      <Sequencer>
+      <ScrollReveal>
       <div className="flex items-center gap-2">
         <span>
           <svg
@@ -56,7 +56,7 @@ const ProjectsPage = () => {
       </div>
       <div className="flex gap-2 items-center mt-2">
         <a
-          href="newflix-lilac.vercel.app"
+          href="https://newflix-lilac.vercel.app"
           className=" flex items-center text-gray-500 hover:text-gray-600 hover:scale-110"
         >
           <svg
@@ -135,7 +135,7 @@ const ProjectsPage = () => {
       </div>
       <div className="flex gap-2 items-center">
         <a
-          href="discord-clone-seven-mu.vercel.app"
+          href="https://discord-clone-seven-mu.vercel.app"
           className=" flex items-center text-gray-500 hover:text-gray-600 hover:scale-110"
         >
           <svg
@@ -334,7 +334,7 @@ const ProjectsPage = () => {
           </svg>
         </Link>
       </div>
-    </Sequencer>
+    </ScrollReveal>
     </div>
   );
 };

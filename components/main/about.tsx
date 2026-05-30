@@ -19,6 +19,9 @@ const About = () => {
     <>
       <div className="flex flex-col justify-center items-center w-full md:w-[45vw] gap-5 mt-8 px-4 md:px-0 pb-10 md:pb-0 ">
         <Sequencer>
+          <AnimatedText as="h1" className="text-xl md:text-2xl font-bold" delay={0.02}>
+            Akshat Thapliyal
+          </AnimatedText>
           <AnimatedText
             as="p"
             className="text-justify text-sm md:text-base"
@@ -40,7 +43,7 @@ const About = () => {
               <div>
                 <img
                   src="/nav-svg/arrow_forward_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg"
-                  alt=""
+                  alt="Arrow icon indicating availability"
                 />
               </div>
             </div>
